@@ -3,6 +3,7 @@ package savci.tfgame;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements FlingCardListener
     public TextView timeText;
     public int counter = 0;
     int currentTime;
+    LinearLayout scoreBoardLayout;
     AlertDialog.Builder alertDialogBuilder;
     CountDownTimer timer;
 
@@ -56,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements FlingCardListener
         flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
         timeText = (TextView) findViewById(R.id.timeTextView);
         timeText.setText("10");
+        scoreBoardLayout = (LinearLayout) findViewById(R.id.scoreBoardLayout);
+
         // Load an ad into the AdMob banner view.
         AdView adView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -65,12 +70,16 @@ public class MainActivity extends AppCompatActivity implements FlingCardListener
         timer = new CountDownTimer(12000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timeText.setText(String.valueOf(currentTime--));
+
             }
             public void onFinish() {
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
         };
+
+
+
 
         currentTime = 10;
         al = new ArrayList<>();
@@ -113,8 +122,8 @@ public class MainActivity extends AppCompatActivity implements FlingCardListener
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
-
                 timer.onFinish();
+                timer.cancel();
             }
 
             @Override
@@ -126,7 +135,9 @@ public class MainActivity extends AppCompatActivity implements FlingCardListener
                 scoreText.setText(String.valueOf(counter++));
 
                 currentTime = 10;
+                timer.cancel();
                 timer.start();
+
             }
 
             @Override
