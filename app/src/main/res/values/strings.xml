@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DogruYanlis</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-4997973730569034/3631460670</string>
+
+</resources>
