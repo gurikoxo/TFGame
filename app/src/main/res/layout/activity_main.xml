@@ -32,7 +32,8 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/scoreBoardLayout">
 
             <TextView
                 android:id="@+id/textView"
@@ -50,6 +51,20 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView"
+
+                android:scaleType="fitXY"
+                android:layout_weight="0.5" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+
             <TextView
                 android:id="@+id/timeTextView"
                 android:layout_width="wrap_content"
@@ -59,7 +74,7 @@
                 android:numeric="integer"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="80sp" />
+                android:textSize="80sp"/>
         </LinearLayout>
         <!-- view for AdMob Banner Ad -->
         <com.google.android.gms.ads.AdView
@@ -68,9 +83,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|bottom"
             ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id"
-            android:layout_gravity="center_horizontal|bottom" />
+            ads:adUnitId="@string/banner_ad_unit_id" />
+
+
     </FrameLayout>
 
 
